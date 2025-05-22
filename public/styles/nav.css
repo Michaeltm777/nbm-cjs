@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "naz";
+    src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+    font-family: "titr";
+    src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+    font-family: "sans";
+    src: url(/assets/fonts/sans.ttf);
+}
+
+body {
+    font-family: "sans";
+}
+
+/* استایل نوبار */
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #001a6e !important;
+}
+
+/* نام کلیسا */
+.title {
+    font-family: "titr";
+    font-size: 3.5vw; /* تغییر از px به vw برای ریسپانسیو */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f3fce8;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* لوگو */
+.logo {
+    height: auto;
+    width: 15vw; /* از واحدهای ریسپانسیو استفاده شود */
+    max-width: 120px;
+    min-width: 60px;
+    margin-bottom: 10px;
+}
+
+/* منوی اصلی */
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+.nav-item {
+    text-align: center;
+}
+.navbar-nav .nav-link {
+    font-size: 0.9rem;
+    font-family: "sans";
+    color: #cfcfcd;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.navbar-nav .nav-link.active {
+    color: #fbffe4 !important;
+    font-weight: bold;
+}
+
+/* دکمه‌ها */
+.btn-primary {
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+.navbar .btn-warning {
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .btn-warning:hover {
+    background-color: #ffc107cc;
+    color: #000;
+}
+.donate-btn {
+    background-color: #ffc107 !important; /* زرد Bootstrap */
+    color: #000 !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.donate-btn:hover {
+    background-color: #e0a800 !important;
+    color: #000 !important;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .title {
+        font-size: 6vw;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-MEZ23JPF5J');
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>پیامها</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            .main-div {
+                min-height: 100vh;
+            }
+
+            .message-container {
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #faeee0;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 800px;
+            }
+
+            .message-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .message-content {
+                font-size: 14px;
+                text-align: justify;
+                line-height: 30px;
+            }
+
+            .message-date {
+                font-size: 14px;
+                color: #888;
+                margin-top: 10px;
+
+            }
+        </style>
+    </head>
+
+    <body class="container-xxl">
+        <%- include('partials/navbar') %>
+            <div class="main-div">
+                <div class="message-container text-right">
+                    <% if (message) { %>
+                        <div class="message-title">
+                            <%= message.title %>
+                        </div>
+                        <div class="message-content">
+                            <%= message.content %>
+                        </div>
+                        <!-- <div class="message-date">
+                        تاریخ ثبت: <%= new Date(message.date_created).toLocaleString() %>
+                    </div> -->
+                        <% } else { %>
+                            <p class="text-center">هیچ پیامی موجود نیست.</p>
+                            <% } %>
+                </div>
+
+            </div>
+
+            <%- include('partials/footer') %>
+    </body>
+
+</html>

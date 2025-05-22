@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MEZ23JPF5J');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radio NBM</title>
+  <link rel="stylesheet" href="/styles/radio.css" />
+  <link rel="stylesheet" href="/styles/bootstrap.rtl.min.css" />
+  <script src="https://kit.fontawesome.com/97e783ab0b.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="container-xxl">
+  <%- include('partials/navbar') %>
+    <div class="cont">
+      <div class="music-player">
+        <img src="/assets/images/nbmlogo.webp" class="song-img" alt="Song Image" />
+        <h1 id="title">نام سرود</h1>
+        <p id="artist">نام خواننده یا گروه</p>
+
+        <audio id="song">
+          <source src="https://play.radioking.io/new-beginning-radio-1" type="audio/mpeg" />
+        </audio>
+
+        <div class="controls">
+          <div onclick="playPause()">
+            <i class="fa-solid fa-play" id="ctrlIcon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+      <script src="/js/radio.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "naz";
+  src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+  font-family: "titr";
+  src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+  font-family: "sans";
+  src: url(/assets/fonts/sans.ttf);
+}
+
+body {
+  font-family: "sans", sans-serif;
+  background-color: rgb(226, 224, 221);
+}
+
+.hero {
+  background: url("/assets/images/ed-2.webp") top center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.content-section {
+  padding: 60px 20px;
+}
+
+.content-section img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#p-1 {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 30px;
+}
+
+#ht {
+  font-family: "titr", sans-serif;
+}
+/* بهینه‌سازی استایل برای نمایش بهتر در موبایل */
+@media (max-width: 768px) {
+  .hero {
+    height: 30vh;
+  }
+
+  #p-1 {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .content-section {
+    padding: 30px 10px;
+  }
+
+  /* دکمه در موبایل زیر عکس نمایش داده شود */
+  .text-center.mt-3 {
+    margin-top: 20px;
+  }
+  #img {
+    margin-bottom: 50px;
+  }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MEZ23JPF5J');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نبوت‌ها | Prophecies</title>
+  <!-- لینک به Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <style>
+    html {
+      background-color: rgb(226, 224, 221);
+    }
+
+    body {
+      color: #333;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      background: url("/assets/images/pr-1.webp") no-repeat center center;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .prophecy-section {
+      padding: 50px 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .prophecy-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #e63946;
+    }
+
+    .txt-box {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: justify;
+      line-height: 30px;
+    }
+
+    .prophecy-date {
+      font-size: 14px;
+      color: gray;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body class="container-xxl">
+  <!-- نوار منو -->
+  <%- include('partials/navbar') %>
+
+    <!-- بخش هیرو -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1>نبوت‌های الهی</h1>
+        <p class="lead">پیام‌هایی از خداوند برای زمان‌های کنونی</p>
+      </div>
+    </section>
+
+    <!-- بخش نبوت‌ها -->
+    <section class="container mt-5">
+      <h2 class="text-center mb-4">آخرین نبوت‌ها</h2>
+
+      <% if (textblocks && textblocks.length> 0) { %>
+        <% textblocks.forEach(function(item) { %>
+          <div class="prophecy-section">
+            <div class="prophecy-title">
+              <%= item.title %>
+            </div>
+            <div class="prophecy-date">
+              <%= new Date(item.date_created).toLocaleDateString('fa-IR') %>
+            </div>
+            <p class="txt-box">
+              <%= item.content %>
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button class="btn btn-outline-danger btn-sm like-btn" data-id="<%= item.id %>">
+                ❤️ لایک <span class="like-count">
+                  <%= item.likes || 0 %>
+                </span>
+              </button>
+
+              <button class="btn btn-outline-primary btn-sm share-btn" data-title="<%= item.title %>"
+                data-content="<%= item.content.replace(/(<([^>]+)>)/gi, '') %>">
+                اشتراک‌گذاری 📤
+              </button>
+            </div>
+          </div>
+          <% }); %>
+            <% } else { %>
+              <p>هیچ نبوتی موجود نیست.</p>
+              <% } %>
+    </section>
+
+    <!-- فوتر -->
+    <%- include('partials/footer') %>
+
+      <!-- اسکریپت‌ها -->
+      <script>
+        // لایک
+        document.querySelectorAll('.like-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            fetch(`/like/${id}`, {
+              method: 'POST'
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  btn.querySelector('.like-count').textContent = data.likes;
+                }
+              });
+          });
+        });
+
+        // اشتراک‌گذاری
+        document.querySelectorAll('.share-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const title = btn.getAttribute('data-title');
+            const content = btn.getAttribute('data-content');
+            const shareText = `📜 ${title}\n\n${content}\n\n📍 وبسایت: ${window.location.href}`;
+
+            if (navigator.share) {
+              navigator.share({
+                title: title,
+                text: shareText,
+                url: window.location.href
+              }).catch(err => console.error("خطا در اشتراک‌گذاری:", err));
+            } else {
+              navigator.clipboard.writeText(shareText).then(() => {
+                alert("متن پیام کپی شد! اکنون می‌توانید آن را با دیگران به اشتراک بگذارید.");
+              });
+            }
+          });
+        });
+      </script>
+</body>
+
+</html>

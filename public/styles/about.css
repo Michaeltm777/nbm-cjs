@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "naz";
+  src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+  font-family: "titr";
+  src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+  font-family: "sans";
+  src: url(/assets/fonts/sans.ttf);
+}
+
+html {
+  background-color: rgb(226, 224, 221);
+}
+/* سکشن تصویر با متن */
+.about-header {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.about-header .header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.about-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+h3 {
+  font-family: "naz";
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  font-family: "naz";
+}
+
+#lead {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: justify;
+  text-align: center;
+  line-height: 30px;
+}
+
+#lead-li {
+  margin-top: 20px;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 30px;
+}
+
+/* استایل خادمین */
+.church-leaders {
+  text-align: center;
+}
+
+.leader-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border: 5px solid #ddd;
+}
+
+/* بخش چشم‌انداز */
+.church-vision {
+  text-align: center;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+  .leader-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .about-header h2 {
+    font-size: 2rem;
+  }
+
+  .about-header p {
+    font-size: 1rem;
+  }
+}

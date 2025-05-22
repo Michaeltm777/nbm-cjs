@@ -1,0 +1,136 @@
+@font-face {
+    font-family: "naz";
+    src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+    font-family: "titr";
+    src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+    font-family: "sans";
+    src: url(/assets/fonts/sans.ttf);
+}
+
+/* تنظیم اندازه تصاویر برای نمایش ریسپانسیو */
+#imgge-size {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+html {
+    background-color: rgb(226, 224, 221);
+}
+
+/* استایل‌های کلی */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: "sans", sans-serif;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+/* سکشن هیرو */
+.hero {
+    position: relative;
+    background: url("/assets/images/con-1.webp") no-repeat center center;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* تنظیمات سکشن‌های محتوایی */
+.section-container {
+    padding: 40px 20px;
+}
+
+.counseling-item {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counseling-icon {
+    font-size: 40px;
+    color: #e63946;
+    margin-bottom: 10px;
+}
+
+/* دکمه درخواست مشاوره */
+.btn-counseling {
+    background-color: #e63946;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    width: auto;
+}
+
+.btn-counseling:hover {
+    background-color: #b92e38;
+}
+
+/* استایل توضیحات کلی */
+.general-info {
+    background: #fff;
+    padding: 30px 20px;
+    text-align: justify;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+#strong {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* تنظیمات ریسپانسیو */
+@media (max-width: 768px) {
+    .hero {
+        height: 40vh;
+    }
+    .counseling-item {
+        font-size: 13px;
+    }
+    .general-info {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 35vh;
+    }
+    .hero-overlay {
+        padding: 15px;
+    }
+    .btn-counseling {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

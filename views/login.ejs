@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-MEZ23JPF5J');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ورود</title>
+    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="/styles/bootstrap.rtl.min.css" />
+    <style></style>
+  </head>
+
+  <body class="container-xxl">
+    <%- include ('partials/navbar') %>
+
+      <main>
+
+        <div class="main-1">
+          <% if (message) { %>
+            <div class="alert alert-info">
+              <%= message %>
+            </div>
+            <% } %>
+              <h2 class="h5 fw-bold">ورود به حساب کاربری</h2>
+              <form action="/login" method="POST">
+                <div class="input-group">
+                  <label for="email">ایمیل:</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="input-group">
+                  <label for="password">رمز عبور:</label>
+                  <input type="password" id="password" name="password" required />
+                </div>
+                <button type="submit">ورود</button>
+                <a class="register-link" href="register">عضویت</a>
+              </form>
+        </div>
+      </main>
+
+      <%- include ('partials/footer') %>
+  </body>
+
+</html>

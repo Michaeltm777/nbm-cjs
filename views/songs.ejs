@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>لیست موزیک‌ها</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+        <style>
+            body {
+                background: #f9f9f9;
+            }
+
+            .sidebar {
+                min-width: 180px;
+                background-color: #ffffff;
+                padding: 1rem;
+                border-radius: 10px;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+                height: fit-content;
+            }
+
+            .genre-link,
+            .artist-link {
+                display: block;
+                margin-bottom: 10px;
+                color: #6a1b9a;
+                font-size: 13px;
+            }
+
+            .genre-link.active,
+            .artist-link.active {
+                font-weight: bold;
+                color: #d81b60;
+            }
+
+            .music-card {
+                border-radius: 15px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                padding: 1rem;
+                background-color: #fff;
+                text-align: center;
+                position: relative;
+            }
+
+            .music-card img {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+                border: 5px solid rgb(240, 227, 243);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+
+            .music-card audio {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .text-muted {
+                font-size: 13px;
+                font-weight: 400;
+            }
+
+            .search-form {
+                margin: 1rem;
+            }
+
+            .duration {
+                font-size: 0.9rem;
+                color: #777;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <%- include('partials/navbar', { user: user }) %>
+
+            <form method="GET" action="/songs" class="search-form d-flex justify-content-center">
+                <input type="text" name="search" class="form-control w-50 mx-2" placeholder="جستجو عنوان..."
+                    value="<%= query || '' %>">
+                <% if (genreFilter) { %>
+                    <input type="hidden" name="genre" value="<%= genreFilter %>">
+                    <% } %>
+                        <% if (artistFilter) { %>
+                            <input type="hidden" name="artist" value="<%= artistFilter %>">
+                            <% } %>
+                                <button class="btn btn-primary">جستجو</button>
+            </form>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 sidebar">
+                        <h5 class="fs-6">دسته بندی</h5>
+                        <a href="/songs?<%= artistFilter ? ('artist=' + artistFilter) : '' %>"
+                            class="genre-link <%= !genreFilter ? 'active' : '' %>">همه</a>
+                        <% if (genres && genres.length> 0) { %>
+                            <% genres.forEach(g=> { %>
+                                <a href="/songs?genre=<%= g.genre %><%= artistFilter ? ('&artist=' + artistFilter) : '' %>"
+                                    class="genre-link <%= genreFilter === g.genre ? 'active' : '' %>">
+                                    <%= g.genre %>
+                                </a>
+                                <% }) %>
+                                    <% } %>
+                                        <hr>
+                                        <h5 class="fs-6">خواننده‌ها</h5>
+                                        <a href="/songs?<%= genreFilter ? ('genre=' + genreFilter) : '' %>"
+                                            class="artist-link <%= !artistFilter ? 'active' : '' %>">همه</a>
+                                        <% if (artists && artists.length> 0) { %>
+                                            <% artists.forEach(a=> { %>
+                                                <a href="/songs?artist=<%= a.artist %><%= genreFilter ? ('&genre=' + genreFilter) : '' %>"
+                                                    class="artist-link <%= artistFilter === a.artist ? 'active' : '' %>">
+                                                    <%= a.artist %>
+                                                </a>
+                                                <% }) %>
+                                                    <% } %>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="row">
+                            <% if (songs.length===0) { %>
+                                <div class="col-12 text-center">
+                                    <p>موزیکی یافت نشد.</p>
+                                </div>
+                                <% } else { %>
+                                    <% songs.forEach(song=> { %>
+                                        <div class="col-md-4 mb-4">
+                                            <div class="music-card">
+                                                <div
+                                                    style="position: relative; width: 200px; height: 200px; margin: auto;">
+                                                    <img src="<%= song.image_url %>" alt="کاور">
+                                                    <canvas class="visualizer-canvas" width="200" height="200"
+                                                        style="position:absolute; top:0; left:0;"></canvas>
+                                                </div>
+                                                <p class="text-muted">
+                                                    <%= song.artist %>
+                                                </p>
+                                                <audio controls crossorigin="anonymous">
+                                                    <source src="<%= song.audio_url %>" type="audio/mpeg">
+                                                </audio>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const players = document.querySelectorAll('audio');
+                const canvases = document.querySelectorAll('.visualizer-canvas');
+                const audioContexts = [];
+                const analyzers = [];
+                const sources = [];
+                const animationFrames = [];
+
+                players.forEach((player, index) => {
+                    let initialized = false;
+
+                    player.addEventListener('play', async () => {
+                        players.forEach((p, i) => {
+                            if (p !== player) {
+                                p.pause();
+                                cancelAnimationFrame(animationFrames[i]);
+                                clearCanvas(canvases[i]);
+                            }
+                        });
+
+                        try {
+                            if (!initialized) {
+                                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                                const audioContext = new AudioContext();
+                                const analyzer = audioContext.createAnalyser();
+                                const source = audioContext.createMediaElementSource(player);
+
+                                source.connect(analyzer);
+                                analyzer.connect(audioContext.destination);
+                                analyzer.fftSize = 512;
+
+                                audioContexts[index] = audioContext;
+                                analyzers[index] = analyzer;
+                                sources[index] = source;
+                                initialized = true;
+                            }
+
+                            if (audioContexts[index].state === 'suspended') {
+                                await audioContexts[index].resume();
+                            }
+
+                            visualize(analyzers[index], canvases[index], index);
+
+                        } catch (error) {
+                            console.warn('مشکل AudioContext یا CORS:', error);
+                        }
+                    });
+
+                    player.addEventListener('pause', () => {
+                        cancelAnimationFrame(animationFrames[index]);
+                        clearCanvas(canvases[index]);
+                    });
+
+                    player.addEventListener('ended', () => {
+                        cancelAnimationFrame(animationFrames[index]);
+                        clearCanvas(canvases[index]);
+                        const nextPlayer = players[index + 1];
+                        if (nextPlayer) {
+                            nextPlayer.play();
+                        } else {
+                            players[0].play();
+                        }
+                    });
+                });
+
+                function visualize(analyzer, canvas, index) {
+                    const ctx = canvas.getContext('2d');
+                    const bufferLength = analyzer.frequencyBinCount;
+                    const dataArray = new Uint8Array(bufferLength);
+
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    const baseRadius = 90;
+                    const totalBars = 90;
+                    const maxAmplitude = 15;
+
+                    function draw() {
+                        analyzer.getByteFrequencyData(dataArray);
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                        const step = Math.floor(bufferLength / totalBars);
+
+                        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                        gradient.addColorStop(0, "#ff00cc");
+                        gradient.addColorStop(0.5, "#3333ff");
+                        gradient.addColorStop(1, "#00ff99");
+
+                        for (let i = 0; i < totalBars; i++) {
+                            const dataIndex = i * step;
+                            let rawAmplitude = dataArray[dataIndex];
+
+                            if (rawAmplitude < 5) {
+                                rawAmplitude = 0;
+                            }
+
+                            const amplitude = Math.min(rawAmplitude / 5, maxAmplitude);
+
+                            const angle = (i / totalBars) * 2 * Math.PI;
+
+                            const x1 = centerX + Math.cos(angle) * baseRadius;
+                            const y1 = centerY + Math.sin(angle) * baseRadius;
+                            const x2 = centerX + Math.cos(angle) * (baseRadius + amplitude);
+                            const y2 = centerY + Math.sin(angle) * (baseRadius + amplitude);
+
+                            ctx.beginPath();
+                            ctx.moveTo(x1, y1);
+                            ctx.lineTo(x2, y2);
+                            ctx.strokeStyle = gradient;
+                            ctx.lineWidth = 2;
+                            ctx.stroke();
+                        }
+
+                        animationFrames[index] = requestAnimationFrame(draw);
+                    }
+
+                    draw();
+                }
+
+                function clearCanvas(canvas) {
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            </script>
+
+            <%- include('partials/footer') %>
+
+    </body>
+
+</html>

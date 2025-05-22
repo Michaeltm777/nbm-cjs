@@ -1,0 +1,118 @@
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-MEZ23JPF5J');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/admin.css">
+</head>
+
+
+
+<body dir="rtl">
+    <%- include('partials/navbar') %>
+
+        <main class="container-xxl mt-4">
+            <h1 class="text-primary">پنل مدیریت</h1>
+            <h2 class="text-secondary">مدیریت کاربران</h2>
+
+            <div class="table-responsive mytable">
+                <table class="table table-striped table-bordered table-hover text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>نام</th>
+                            <th>نام خانوادگی</th>
+                            <th>جنسیت</th>
+                            <th>سن</th>
+                            <th>وضعیت تاهل</th>
+                            <th>ایمیل</th>
+                            <th>شماره تلفن</th>
+                            <th>شهر اقامت</th>
+                            <th>کشور محل اقامت</th>
+                            <th>نقش کاربر</th>
+                            <th> وضعیت کاربر</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user=> { %>
+                            <tr>
+                                <td>
+                                    <%= user.name %>
+                                </td>
+                                <td>
+                                    <%= user.lastname %>
+                                </td>
+                                <td>
+                                    <%= user.gender %>
+                                </td>
+                                <td>
+                                    <%= user.date_of_birth %>
+                                </td>
+                                <td>
+                                    <%= user.marital_status %>
+                                </td>
+
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <%= user.phone %>
+                                </td>
+                                <td>
+                                    <%= user.city %>
+                                </td>
+                                <td>
+                                    <%= user.country %>
+                                </td>
+                                <td class="col-auto">
+                                    <form action="/admin/update_role/<%= user.id %>" method="POST">
+                                        <select name="role" class="form-select form-select-sm w-100">
+                                            <option value="user" <%=user.role==='user' ? 'selected' : '' %>>کاربر
+                                            </option>
+                                            <option value="admin" <%=user.role==='admin' ? 'selected' : '' %>>ادمین
+                                            </option>
+                                            <option value="super_user" <%=user.role==='super_user' ? 'selected' : '' %>
+                                                >خادم</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-success btn-sm mt-2">Update</button>
+                                    </form>
+                                </td>
+                                <td class="col-auto">
+                                    <form action="/admin/update_status/<%= user.id %>" method="POST">
+                                        <select name="status" class="form-select form-select-sm w-100">
+                                            <option value="active" <%=user.status==='active' ? 'selected' : '' %>>Active
+                                            </option>
+                                            <option value="pending" <%=user.status==='pending' ? 'selected' : '' %>
+                                                >Pending</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-warning btn-sm mt-2">Update</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="/admin/delete/<%= user.id %>" class="btn btn-danger btn-sm">حذف</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </main>
+        <%- include ('partials/footer') %>
+
+</body>
+
+</html>

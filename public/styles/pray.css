@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "naz";
+  src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+  font-family: "titr";
+  src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+  font-family: "sans";
+  src: url(/assets/fonts/sans.ttf);
+}
+
+html {
+  background-color: rgb(226, 224, 221);
+}
+
+/* استایل‌های سفارشی */
+.hero {
+  position: relative;
+  background: url("/assets/images/pray-1.webp") no-repeat center center;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.content-section {
+  padding: 60px 20px;
+}
+
+.content-section img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+#s-2 {
+  font-family: "titr", sans-serif;
+}
+#p-1 {
+  font-family: "sans", sans-serif;
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: justify;
+  /* text-align: center; */
+  line-height: 30px;
+}
+#btn-text {
+  font-family: "sans", sans-serif;
+  font-size: 15px;
+  padding: 10px;
+  border: none;
+  background-color: rgb(80, 156, 255);
+  color: black;
+  border-radius: 5px;
+  text-decoration: none;
+}
+#btn-text:hover {
+  background-color: rgb(3, 81, 182);
+  color: white;
+}

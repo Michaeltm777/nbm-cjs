@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-MEZ23JPF5J');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بخش کودکان | محتوای آموزشی</title>
+    <!-- لینک به Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        background-color: rgb(226, 224, 221);
+      }
+      /* استایل‌های کلی */
+      body {
+        /* background-color: #f9f9f9; */
+        color: #333;
+      }
+
+      /* سکشن هیرو */
+      .hero {
+        position: relative;
+        background: url("/assets/images/ch-1.webp") no-repeat center center;
+        background-size: cover;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+
+      .hero-overlay {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      /* استایل سایدبار */
+      .sidebar {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 10px;
+        margin-bottom: 10px;
+        background: #e63946;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .sidebar a:hover {
+        background: #b92e38;
+      }
+
+      /* استایل بخش محتوا */
+      .content-section {
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* نمایش سایدبار به‌عنوان منو در موبایل */
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+
+        .toggle-sidebar {
+          display: block;
+          margin-bottom: 20px;
+          background: #e63946;
+          color: white;
+          padding: 10px;
+          border-radius: 5px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="container-xxl">
+    <!-- نوار منو -->
+    <%- include('partials/navbar') %>
+
+    <!-- بخش هیرو -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1>بخش کودکان</h1>
+        <p class="lead">مطالب جذاب و آموزنده برای کودکان</p>
+      </div>
+    </section>
+
+    <!-- دکمه نمایش سایدبار در موبایل -->
+    <div class="container d-md-none">
+      <div class="toggle-sidebar" onclick="toggleSidebar()">
+        🧸 دسته‌بندی‌ها
+      </div>
+    </div>
+
+    <!-- بخش محتوای صفحه -->
+    <div class="container mt-4">
+      <div class="row">
+        <!-- سایدبار -->
+        <div class="col-md-3">
+          <div class="sidebar" id="sidebar">
+            <h4 class="text-center">دسته‌بندی‌ها</h4>
+            <a href="#" onclick="showContent('poems')">📜 شعر</a>
+            <a href="#" onclick="showContent('stories')">📖 داستان</a>
+            <a href="#" onclick="showContent('teachings')"
+              >🌟 آموزه‌های معنوی</a
+            >
+            <a href="#" onclick="showContent('games')">🎲 بازی‌ها</a>
+            <a href="#" onclick="showContent('activities')">🎨 سرگرمی‌ها</a>
+          </div>
+        </div>
+
+        <!-- محتوای اصلی -->
+        <div class="col-md-9">
+          <div class="content-section" id="content">
+            <h2 class="text-center">🎉 محتوای بخش کودکان</h2>
+            <p class="text-center">یک موضوع را از سایدبار انتخاب کنید.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- فوتر -->
+    <%- include('partials/footer') %>
+
+    <!-- اسکریپت‌های Bootstrap -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <!-- اسکریپت‌های جاوااسکریپت -->
+    <script>
+      function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        sidebar.style.display =
+          sidebar.style.display === "block" ? "none" : "block";
+      }
+
+      function showContent(category) {
+        var content = document.getElementById("content");
+        var htmlContent = "";
+
+        if (category === "poems") {
+          htmlContent =
+            "<h2>📜 شعرهای کودکانه</h2><p>شعرهای آموزنده و زیبا برای کودکان.</p>";
+        } else if (category === "stories") {
+          htmlContent =
+            "<h2>📖 داستان‌های جذاب</h2><p>داستان‌های الهام‌بخش و آموزنده برای کودکان.</p>";
+        } else if (category === "teachings") {
+          htmlContent =
+            "<h2>🌟 آموزه‌های معنوی</h2><p>مفاهیم معنوی به زبان ساده برای کودکان.</p>";
+        } else if (category === "games") {
+          htmlContent =
+            "<h2>🎲 بازی‌های سرگرم‌کننده</h2><p>معرفی بازی‌های خلاقانه و آموزنده.</p>";
+        } else if (category === "activities") {
+          htmlContent =
+            "<h2>🎨 سرگرمی‌ها و کاردستی‌ها</h2><p>فعالیت‌های جذاب برای یادگیری و سرگرمی.</p>";
+        }
+
+        content.innerHTML = htmlContent;
+      }
+    </script>
+  </body>
+</html>

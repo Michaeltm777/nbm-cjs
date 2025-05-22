@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "naz";
+    src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+    font-family: "titr";
+    src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+    font-family: "sans";
+    src: url(/assets/fonts/sans.ttf);
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: "naz", sans-serif; /* اضافه کردن فونت naz به body */
+}
+
+h1,
+h2 {
+    font-family: "titr";
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    font-size: 0.8rem;
+}
+select {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.5rem;
+    min-width: 100px; /*حداقل عرض */
+}
+
+@media (max-width: 768px) {
+    main {
+        max-width: 100%;
+        padding: 10px;
+    }
+    select {
+        font-size: 12px;
+        padding: 2px;
+    }
+}

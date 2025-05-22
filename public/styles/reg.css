@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "naz";
+  src: url(/assets/fonts/naz.TTF);
+}
+@font-face {
+  font-family: "titr";
+  src: url(/assets/fonts/title.ttf);
+}
+@font-face {
+  font-family: "sans";
+  src: url(/assets/fonts/sans.ttf);
+}
+
+html {
+  background-color: rgb(226, 224, 221);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "sans", sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.main-1 {
+  background: #ececec;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #1464a5;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0f4c81;
+}
+.login-link {
+  display: block;
+  margin-top: 15px;
+  color: #1464a5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+  }
+}

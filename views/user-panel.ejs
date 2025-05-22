@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-MEZ23JPF5J');
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>پنل کاربری | User Dashboard</title>
+        <!-- لینک به Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+        <style>
+            /* استایل‌های سفارشی */
+            body {
+                background-color: #f8f9fa;
+                color: #333;
+            }
+
+            .dashboard-container {
+                padding: 40px 20px;
+            }
+
+            .dashboard-card {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+
+            .dashboard-title {
+                font-size: 22px;
+                font-weight: bold;
+                margin-bottom: 15px;
+                color: #e63946;
+            }
+
+            .message-item {
+                background: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            }
+
+            .lesson-item {
+                background: #f0f0f0;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .btn-dashboard {
+                background-color: #e63946;
+                color: white;
+                font-size: 16px;
+                padding: 10px 20px;
+                border-radius: 8px;
+                display: inline-block;
+                text-align: center;
+            }
+
+            .btn-dashboard:hover {
+                background-color: #b92e38;
+                color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- نوار منو -->
+        <%- include('partials/navbar') %>
+
+            <!-- پنل کاربری -->
+            <section class="dashboard-container container">
+                <!-- پیام خوش‌آمدگویی با تشخیص جنسیت -->
+                <div class="welcome-message mb-5 text-center h4 fw-bold">
+                    <% if (user.gender==='female' ) { %>
+                        خواهر <%= user.name %>، به پنل کاربری خوش آمدید!
+                            <% } else { %>
+                                برادر <%= user.name %>، به پنل کاربری خوش آمدید!
+                                    <% } %>
+                                        <p class="h6 fw-normal mt-3">در حال حاضر پیام یا موضوع درسی برای شما وجود ندارد
+                                        </p>
+                </div>
+                <div class="row">
+                    <!-- پیام‌های شخصی -->
+                    <div class="col-md-6">
+                        <div class="dashboard-card">
+                            <div class="dashboard-title">📥 پیام‌های شخصی از کلیسا</div>
+
+                        </div>
+                    </div>
+
+                    <!-- پیام‌های عمومی کلیسا -->
+                    <div class="col-md-6">
+                        <div class="dashboard-card">
+                            <div class="dashboard-title">📢 پیام‌های عمومی کلیسا</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بخش دروس کلیسا -->
+                <div class="dashboard-card">
+                    <div class="dashboard-title">📖 دروس کلیسا</div>
+
+                </div>
+
+            </section>
+
+            <!-- فوتر -->
+            <%- include('partials/footer') %>
+
+                <!-- اسکریپت‌های Bootstrap -->
+                <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    </body>
+
+</html>

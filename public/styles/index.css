@@ -1,0 +1,228 @@
+/* ریست پایه */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #f9f9f9;
+    font-family: "sans";
+}
+
+/* سکشن هدر */
+.hero {
+    background: url("/assets/images/bg-1.webp") top center/cover no-repeat;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #001a6e;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(241, 239, 239, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+}
+
+.hero-title {
+    font-size: 4vw;
+    font-family: "titr";
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: 2vw;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.verses-h3 {
+    font-family: "titr";
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.verses-p {
+    font-family: "naz";
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+/* آیه روز */
+.daily_verses {
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.daily_verses h3 {
+    font-size: 2rem;
+    color: black;
+    font-family: "titr";
+}
+
+#dailyVersesWrapper {
+    font-size: 1.2rem;
+    font-family: "naz";
+    color: black;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: inline-block;
+}
+.as {
+    text-decoration: none;
+    color: black;
+}
+
+.sis {
+    transition: transform 0.3s;
+}
+.sis:hover {
+    transform: scale(1.05);
+}
+/* کارت‌ها */
+.features {
+    padding: 50px 0;
+    background: #f9f9f9;
+}
+
+.feature-card {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    width: 100%;
+    max-width: 22rem;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.leader-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #ddd;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* پیام روز در سمت راست */
+.daily-message-bar {
+    position: fixed;
+    top: 85%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: rgba(3, 49, 252, 0.5);
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.daily-message-bar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+/* ریسپانسیو موبایل */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 300px;
+    }
+
+    .hero-title {
+        font-size: 6vw;
+    }
+
+    .hero-subtitle {
+        font-size: 4vw;
+    }
+
+    .daily_verses {
+        padding: 20px;
+    }
+
+    .feature-image {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .leader-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .daily-message-bar {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 7vw;
+    }
+
+    .hero-subtitle {
+        font-size: 4.5vw;
+    }
+
+    .verses-p {
+        font-size: 1rem;
+    }
+
+    #dailyVersesWrapper {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .feature-card {
+        margin-bottom: 25px; /* فاصله بین کارت‌ها */
+        max-width: 18rem; /* کوچکتر کردن کارت */
+        padding: 15px;
+    }
+
+    .feature-image {
+        width: 100%;
+        max-width: 160px;
+        height: auto;
+    }
+
+    .features .row {
+        gap: 15px; /* فاصله بین ردیف‌ها */
+    }
+}

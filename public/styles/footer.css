@@ -1,0 +1,50 @@
+footer {
+    background-color: #001a6e;
+    color: #cfcfcd;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    font-size: 0.8em;
+}
+h3 {
+    font-size: 1.2rem;
+}
+
+/* مدیا کوئری برای موبایل */
+@media (max-width: 480px) {
+    footer p {
+        font-size: 0.6em;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    footer h3 {
+        font-size: 4vw;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    footer div a img {
+        width: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer h3 {
+        font-size: 5vw;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+
+    footer div a img {
+        width: 22px;
+    }
+}

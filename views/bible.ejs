@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-MEZ23JPF5J');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کتاب مقدس</title>
+    <link rel="stylesheet" href="/public/styles/bootstrap.rtl.min.css" />
+    <style>
+      html {
+        background-color: rgb(226, 224, 221);
+      }
+    </style>
+  </head>
+
+  <body class="container-xxl">
+    <%- include('partials/navbar') %>
+      <iframe src="https://www.bible.com/fa/bible/118/GEN.1.NMV" width="100%" height="600px"
+        style="border: none"></iframe>
+
+      <%- include('partials/footer') %>
+  </body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-MEZ23JPF5J');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کلیسای شروع نو - جلسات آنلاین</title>
+    <!-- لینک به Bootstrap RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet"
+      integrity="sha384-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="/styles/online.css" />
+  </head>
+
+  <body class="container-xxl">
+    <!-- نوار منو (Navbar) -->
+    <%- include('partials/navbar') %>
+
+      <!-- بخش هرو: تصویر پس‌زمینه با متن -->
+      <section class="hero">
+        <div class="hero-text">
+          <!-- <h1>به کلیسای شروع نو خوش آمدید</h1>
+          <p>محدوده فعالیت: جهانی</p> -->
+        </div>
+      </section>
+
+      <!-- بخش مزایا: توضیح جامع جلسات کلیسا -->
+      <section class="benefits container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 id="lead-title">مزایای جلسات ما</h2>
+            <p class="mt-4" id="lead">
+              در کلیسای شروع نو، ما با برگزاری مراسم یکشنبه، تعالیم عمیق کتاب
+              مقدس، جلسات پرشور سرود و نیایش، و نشست‌های صمیمانه برای رشد روحانی،
+              فرصتی را برای تجربه‌ای عمیق و تحول‌آفرین در مسیر ایمان و معنویت
+              فراهم می‌کنیم.
+              <br /><br />
+              💻 این جلسات به‌صورت زنده و آنلاین در دنیای مجازی برگزار می‌شوند تا
+              شما در هر کجا که هستید، بتوانید در این فضای گرم، صمیمی و پر از انرژی
+              مثبت حضور داشته باشید. ما شما را به سفری به سوی آرامش درونی، تقویت
+              ایمان و تجربه حضور خداوند دعوت می‌کنیم.
+              <br /><br />
+              ✨ به ما بپیوندید تا در این مسیر پر از نور و امید، دست در دست یکدیگر
+              به سوی فردایی روشن‌تر گام برداریم.
+            </p>
+          </div>
+        </div>
+        <!-- دکمه دعوت به عضویت -->
+        <div class="text-center mt-5">
+          <a href="/register" class="" id="btn-text">به ما ملحق شوید</a>
+        </div>
+      </section>
+
+      <!-- فوتر -->
+      <%- include('partials/footer') %>
+
+        <!-- اسکریپت‌های Bootstrap (اختیاری) -->
+        <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-..."
+      crossorigin="anonymous"
+    ></script> -->
+  </body>
+
+</html>

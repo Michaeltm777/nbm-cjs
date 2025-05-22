@@ -1,0 +1,46 @@
+html {
+    background-color: rgb(226, 224, 221);
+}
+
+/* استایل‌های سفارشی */
+.hero {
+    position: relative;
+    background: url("/assets/images/online-1.webp") center center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f0f0f;
+}
+.hero-text {
+    background: rgba(248, 244, 4, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.benefits {
+    padding: 60px 20px;
+}
+
+#lead {
+    font-family: "sans", sans-serif;
+    text-align: justify;
+    font-size: 15px;
+}
+#lead-title {
+    font-family: "titr", sans-serif;
+}
+#btn-text {
+    font-family: "sans", sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(80, 156, 255);
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+}
+#btn-text:hover {
+    background-color: rgb(3, 81, 182);
+    color: white;
+}

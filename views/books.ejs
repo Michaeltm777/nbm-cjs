@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MEZ23JPF5J');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>کتابخانه | Library</title>
+  <!-- لینک به Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <style>
+    html {
+      background-color: rgb(226, 224, 221);
+    }
+
+    /* استایل کلی */
+    body {
+      /* background-color: #f8f9fa; */
+      color: #333;
+    }
+
+    .library-container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px;
+    }
+
+    /* استایل سایدبار */
+    .sidebar {
+      width: 250px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      height: fit-content;
+    }
+
+    .sidebar h4 {
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .sidebar ul li:hover {
+      background: #e63946;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    /* استایل بخش نمایش کتاب‌ها */
+    .book-list {
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .book-item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .book-item img {
+      width: 80px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-left: 15px;
+    }
+
+    .btn-download {
+      background-color: #e63946;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .btn-download:hover {
+      background-color: #b92e38;
+    }
+
+    /* استایل برای موبایل */
+    @media (max-width: 768px) {
+      .library-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="container-xxl">
+  <!-- نوار منو -->
+  <%- include('partials/navbar') %>
+
+    <div class="container library-container">
+      <!-- سایدبار -->
+      <div class="sidebar">
+        <h4>موضوعات کتاب‌ها</h4>
+        <ul>
+          <li onclick="filterBooks('all')">همه</li>
+          <li onclick="filterBooks('spiritual')">کتاب‌های روحانی</li>
+          <li onclick="filterBooks('family')">خانواده و ازدواج</li>
+          <li onclick="filterBooks('children')">آموزش فرزندان</li>
+          <li onclick="filterBooks('self-development')">توسعه فردی</li>
+          <li onclick="filterBooks('other')">سایر موضوعات</li>
+        </ul>
+      </div>
+
+      <!-- لیست کتاب‌ها -->
+      <div class="book-list">
+        <!-- <div class="book-item" data-category="spiritual">
+            <img src="assets/images/mojdeh-logo.webp" alt="کتاب روحانی">
+            <div>
+              <h5>کتاب مقدس </h5>
+              <p>ترجمه مژده - توسط کانون الهیات مژده<a href="https://mojdehtheology.org/" target="_blank"
+                  rel="noopener noreferrer"> - مراجعه به سایت</a></p>
+              <a href="/assets/pdf/TPV-mobile.pdf" class="btn-download">دانلود PDF</a>
+            </div>
+          </div> -->
+
+        <!-- <div class="book-item" data-category="family">
+            <img src="/assets/images/book2.webp" alt="کتاب خانواده">
+            <div>
+              <h5>هنر زندگی مشترک</h5>
+              <p>راهنمایی برای داشتن یک زندگی مشترک موفق و پایدار.</p>
+              <a href="/assets/books/book2.pdf" class="btn-download">دانلود PDF</a>
+            </div>
+          </div>
+
+          <div class="book-item" data-category="children">
+            <img src="/assets/images/book3.webp" alt="کتاب آموزش فرزندان">
+            <div>
+              <h5>تربیت فرزندان بر اساس ایمان</h5>
+              <p>روش‌های کاربردی برای پرورش فرزندان با ارزش‌های معنوی.</p>
+              <a href="/assets/books/book3.pdf" class="btn-download">دانلود PDF</a>
+            </div>
+          </div>
+
+          <div class="book-item" data-category="self-development">
+            <img src="/assets/images/book4.webp" alt="توسعه فردی">
+            <div>
+              <h5>رشد فردی و موفقیت</h5>
+              <p>اصول کلیدی برای توسعه فردی و موفقیت در زندگی.</p>
+              <a href="/assets/books/book4.pdf" class="btn-download">دانلود PDF</a>
+            </div>
+          </div>
+
+          <div class="book-item" data-category="other">
+            <img src="/assets/images/book5.webp" alt="کتاب دیگر">
+            <div>
+              <h5>کتاب انگیزشی</h5>
+              <p>یک کتاب خواندنی برای افزایش انگیزه و انرژی مثبت.</p>
+              <a href="/assets/books/book5.pdf" class="btn-download">دانلود PDF</a>
+            </div>
+          </div> -->
+      </div>
+    </div>
+
+    <!-- فوتر -->
+    <%- include('partials/footer') %>
+
+      <!-- اسکریپت فیلتر کتاب‌ها -->
+      <script>
+        function filterBooks(category) {
+          let books = document.querySelectorAll(".book-item");
+          books.forEach((book) => {
+            if (
+              category === "all" ||
+              book.getAttribute("data-category") === category
+            ) {
+              book.style.display = "flex";
+            } else {
+              book.style.display = "none";
+            }
+          });
+        }
+      </script>
+</body>
+
+</html>

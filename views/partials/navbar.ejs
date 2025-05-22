@@ -1,0 +1,110 @@
+<head>
+
+
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/styles/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="/styles/nav.css">
+</head>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container flex-column text-center">
+
+
+        <!-- لوگو -->
+        <a class="navbar-brand mx-auto" href="/">
+            <img src="/assets/images/nbmlogo.webp" alt="کلیسای شروع نو" class="logo">
+        </a>
+        <!-- نام کلیسا -->
+        <h1 class="title mb-5">کلیسای شروع نو</h1>
+
+        <!-- دکمه همبرگری در موبایل -->
+        <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- منو -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">خانه</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="/services" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        خدمات
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/education">تعلیم </a></li>
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/deliverance">شفا و آزادی</a></li>
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/consulting"> مشاوره </a></li>
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/pray">دعا و شفاعت</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="/services" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        کتابخانه
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/bible">کتاب مقدس </a></li>
+                        <!-- <li class="nav-item"><a class="dropdown-item nav-link" href="/child">کودکان</a></li> -->
+                        <!-- <li class="nav-item"><a class="dropdown-item nav-link" href="/poem"> اشعار </a></li> -->
+                        <!-- <li class="nav-item"><a class="dropdown-item nav-link" href="/books"> کتابهای مرتبط</a></li> -->
+                        <!-- <li class="nav-item"><a class="dropdown-item nav-link" href="/article"> مقالات</a></li> -->
+
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="/services" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        رویدادها
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/prophecy">نبوتها </a></li>
+                        <li class="nav-item"><a class="dropdown-item nav-link" href="/conference">کنفرانسها</a></li>
+                        <!-- <li class="nav-item"><a class="dropdown-item nav-link" href="/event"> مراسم و اعیاد </a></li> -->
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item"><a class="nav-link" href="/radio">رادیو شروع نو</a></li>
+                <li class="nav-item"><a class="nav-link" href="/songs">سرود و آهنگ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">درباره ما</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">تماس با ما</a></li>
+                <li class="nav-item">
+                    <a class="nav-link donate-btn text-dark fw-bold mx-2 px-3 py-1 rounded-pill" href="/donate">💖
+                        پرداخت هدایا</a>
+                </li>
+
+
+
+                <% if (user) { %>
+                    <% if (user.role==='admin' ) { %>
+                        <li class="nav-item"><a class="nav-link" href="/admin">مدیریت</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="/super_admin">ادمین</a></li> -->
+                        <!-- <li class="nav-item"><a class="nav-link" href="/super_admin">خادمین</a></li> -->
+                        <% } else if (user.role==='user' ) { %>
+                            <li class="nav-item"><a class="nav-link" href="/user-panel">پنل کاربری</a></li>
+                            <% } %>
+                                <li class="nav-item"><a class="nav-link text-danger" href="/logout">خروج</a></li>
+                                <% } else { %>
+                                    <li class="nav-item"><a class="nav-link" href="/login">ورود/ عضویت</a></li>
+
+                                    <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/nav.js"></script>
+
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEZ23JPF5J"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-MEZ23JPF5J');
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>کنفرانس‌های کلیسا | Conferences</title>
+        <!-- لینک به Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+        <style>
+            html {
+                background-color: rgb(226, 224, 221);
+            }
+
+            /* استایل‌های سفارشی */
+            body {
+                /* background-color: #f8f9fa; */
+                color: #333;
+            }
+
+            /* سکشن هیرو */
+            .hero {
+                position: relative;
+                background: url('/assets/images/ev-1.webp') no-repeat center center;
+                background-size: cover;
+                height: 60vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+            }
+
+            .hero-overlay {
+                background: rgba(0, 0, 0, 0.6);
+                padding: 30px;
+                border-radius: 10px;
+            }
+
+            .section-container {
+                padding: 60px 20px;
+            }
+
+            .conference-item {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .conference-img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .btn-register,
+            .btn-whatsapp,
+            .btn-map {
+                font-size: 18px;
+                padding: 12px 24px;
+                border-radius: 10px;
+                display: block;
+                text-align: center;
+                margin: 20px auto;
+                width: fit-content;
+            }
+
+            .btn-register {
+                background-color: #e63946;
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn-register:hover {
+                background-color: #b92e38;
+                color: #fff;
+            }
+
+            .btn-whatsapp {
+                background-color: #25D366;
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn-whatsapp:hover {
+                background-color: #1EBB60;
+                color: #fff;
+            }
+
+            .btn-map {
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn-map:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+            .btn-map img {
+                width: 25px;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+
+    <body class="container-xxl">
+
+        <!-- نوار منو -->
+        <%- include('partials/navbar') %>
+
+            <!-- بخش هیرو -->
+            <section class="hero">
+                <div class="hero-overlay">
+                    <h1>کنفرانس‌های کلیسا</h1>
+                    <p class="lead">اطلاعات درباره کنفرانس‌های آینده و مشاهده رویدادهای گذشته</p>
+                </div>
+            </section>
+
+            <!-- بخش کنفرانس‌های آینده -->
+            <section class="section-container container">
+                <h2 class="text-center mb-4">کنفرانس‌های آینده</h2>
+
+                <div class="conference-item">
+                    <h3>کنفرانس دعا و نجات</h3>
+                    <p>📅 تاریخ: 17 تا 19 آپریل</p>
+                    <p>📍 مکان: سوئد، استکهلم</p>
+                    <p>🔹 این کنفرانس فرصتی عالی برای رشد معنوی و ارتباط با خداوند است.</p>
+
+                    <div class="text-center">
+                        <p>Herrgårdsvägen 45 194 78 Upplands Väsby
+                        </p>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Herrgårdsvägen+45,+194+78+Upplands+Väsby,+Sweden"
+                            class="btn-map" target="_blank">
+                            <img src="/assets/icons/map.webp" alt="گوگل مپ"> مسیر‌یابی با گوگل مپ
+                        </a>
+
+                    </div>
+
+                    <div class="text-center">
+                        <a href="/contact" class="btn-register">ثبت‌نام در کنفرانس</a>
+                    </div>
+                </div>
+            </section>
+
+            </div>
+
+            <!-- <div class="conference-item">
+                    <h3>کنفرانس امید و ایمان</h3>
+                    <p>📅 تاریخ: 28 مرداد 1403</p>
+                    <p>📍 مکان: سالن بزرگ اجتماعات - مشهد</p>
+                    <p>🔹 این کنفرانس ویژه برای الهام‌بخشی و تقویت ایمان برگزار خواهد شد.</p>
+
+                </div> -->
+
+            </section>
+
+            <!-- بخش کنفرانس‌های گذشته -->
+            <!-- <section class="section-container container">
+                <h2 class="text-center mb-4">کنفرانس‌های گذشته</h2>
+
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <img src="/assets/images/conference-1.webp" class="conference-img" alt="کنفرانس گذشته 1">
+                        <h5 class="text-center mt-3">کنفرانس ایمان 1402</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="/assets/images/conference-2.webp" class="conference-img" alt="کنفرانس گذشته 2">
+                        <h5 class="text-center mt-3">کنفرانس دعا و نیایش 1401</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="/assets/images/conference-3.webp" class="conference-img" alt="کنفرانس گذشته 3">
+                        <h5 class="text-center mt-3">کنفرانس شفای روحانی 1400</h5>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- فوتر -->
+            <%- include('partials/footer') %>
+
+                <!-- اسکریپت‌های Bootstrap -->
+                <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    </body>
+
+</html>

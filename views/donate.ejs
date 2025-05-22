@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/styles/donate.css">
+
+<%- include('./partials/navbar') %>
+
+    <div class="donate-container">
+        <h2>حمایت مالی از کلیسا</h2>
+
+        <form action="/donate/stripe" method="POST" id="donation-form">
+            <input type="number" name="amount" id="amount" placeholder="مبلغ" value="10" required />
+
+            <select id="currency" name="currency">
+                <option value="usd" selected>دلار آمریکا (USD)</option>
+                <option value="gbp">پوند انگلیس (GBP)</option>
+                <option value="eur">یورو (EUR)</option>
+            </select>
+
+            <br />
+            <button type="submit" id="stripe-button">پرداخت با کارت (Stripe)</button>
+        </form>
+
+        <p>یا پرداخت با حساب PayPal:</p>
+        <div id="paypal-button-container"></div>
+    </div>
+
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=<%= process.env.PAYPAL_CLIENT_ID %>&disable-funding=card,credit&currency=USD"></script>
+
+    <script>
+        function updatePayPalCurrency() {
+            const selectedCurrency = document.getElementById('currency').value.toUpperCase();
+            const scriptTag = document.querySelector('script[src*="paypal.com/sdk/js"]');
+
+            // فقط اگر تغییر کرده باشد
+            if (!scriptTag.src.includes(`currency=${selectedCurrency}`)) {
+                const newScript = document.createElement('script');
+                newScript.src = `https://www.paypal.com/sdk/js?client-id=<%= process.env.PAYPAL_CLIENT_ID %>&disable-funding=card,credit&currency=${selectedCurrency}`;
+                newScript.onload = renderPayPalButton;
+                scriptTag.replaceWith(newScript);
+            }
+        }
+
+        function renderPayPalButton() {
+            paypal.Buttons({
+                createOrder: function (data, actions) {
+                    const amount = document.getElementById('amount')?.value || '10.00';
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: { value: amount }
+                        }]
+                    });
+                },
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
+                        alert('با تشکر از شما، ' + details.payer.name.given_name);
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+
+        document.getElementById('currency').addEventListener('change', updatePayPalCurrency);
+        renderPayPalButton(); // بارگذاری اولیه
+    </script>
+
+    <%- include('./partials/footer') %>

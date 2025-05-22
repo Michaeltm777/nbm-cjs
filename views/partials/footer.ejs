@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/styles/footer.css" />
+
+<footer class="footer" dir="ltr">
+  <div class="footer-content">
+    <h3>New Beginning Ministries</h3>
+    <p>
+      📍 <%= data.location %> | 📧
+        <a href="mailto:<%= data.email %>">
+          <%= data.email %>
+        </a> | 📞 <%= data.phone %> |
+    </p>
+    <div>
+      <a href="https://wa.me/447868782886" target="_blank" rel="noopener noreferrer"><img style="width: 25px"
+          src="/assets/icons/wh.webp" alt="" /></a>
+      <a href="https://www.facebook.com/share/15B8tU1Wye/" target="_blank" rel="noopener noreferrer"><img
+          style="width: 25px" src="/assets/icons/fac.webp" alt="facebook" /></a>
+      <a href="https://www.instagram.com/nbm_church?igsh=MTZhOHByamo5Z3VycQ==" target="_blank"
+        rel="noopener noreferrer"><img style="width: 25px" src="/assets/icons/ins.webp" alt="" /></a>
+      <a href="https://youtube.com/@nbm-church?si=ik8DcWcJOPPNaNJw" target="_blank" rel="noopener noreferrer"><img
+          style="width: 25px" src="/assets/icons/yt.webp" alt="" /></a>
+    </div>
+    <p class="mt-2">
+      📝 <strong>Company Registration Number:</strong>
+      <%= data.registrationNumber %>
+    </p>
+    <p>
+      © <%= new Date().getFullYear() %> New Beginning Ministries. All Rights
+        Reserved.
+    </p>
+  </div>
+</footer>

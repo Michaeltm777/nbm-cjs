@@ -1,0 +1,75 @@
+/* donate.css - استایل پیشرفته صفحه حمایت مالی */
+body {
+    direction: rtl;
+}
+.donate-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    direction: rtl;
+    text-align: center;
+}
+
+.donate-container h2 {
+    margin-bottom: 20px;
+    color: #007b5e;
+    font-weight: bold;
+}
+
+.donate-container p {
+    margin: 30px 0 10px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.donate-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.donate-container input[type="number"],
+.donate-container select {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.donate-container button {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.donate-container button:hover {
+    background-color: #218838;
+}
+
+#paypal-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+    .donate-container input,
+    .donate-container select,
+    .donate-container button {
+        width: 100%;
+    }
+}
