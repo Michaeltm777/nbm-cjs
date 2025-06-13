@@ -47,22 +47,6 @@ html {
     box-shadow: 0 5px 10px rgba(64, 2, 253, 0.25);
 }
 
-/* nav {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-} */
-/* 
-nav .circle {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  background: #fff;
-  color: #f53192;
-  box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
-} */
-
 .song-img {
     margin-top: 30px;
     width: 250px;
